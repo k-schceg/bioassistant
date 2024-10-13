@@ -7,11 +7,12 @@ def quality(seq: str) -> float:
     quality_mean = sum([ord(i) - 33 for i in seq]) / len(seq)
     return quality_mean
 
+
 def filter_fastq_from_dict(
     seqs: Dict[str, Tuple[str, str]],
     gc_bounds: Union[Tuple[float, float], float] = (0, 100),
     length_bounds: Union[Tuple[int, int], int] = (0, 2**32),
-    quality_threshold: float = 0
+    quality_threshold: float = 0,
 ) -> Dict[str, Tuple[str, str]]:
     """Function filter_fastq_from_dict
 

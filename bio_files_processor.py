@@ -3,9 +3,7 @@ from datetime import datetime
 
 
 def convert_multiline_fasta_to_oneline(
-    input_fasta: str, 
-    output_fasta: str = None,
-    mode: str = None
+    input_fasta: str, output_fasta: str = None, mode: str = None
 ) -> None:
     """Function convert_multiline_fasta_to_oneline
 
@@ -13,7 +11,7 @@ def convert_multiline_fasta_to_oneline(
         input_fasta: str
             path to input fasta file,
         output_fasta: str
-            if None, default file name will be passed in format 
+            if None, default file name will be passed in format
             '%Y_%m_%d-%H_%M_%S_%f_convert_multiline_fasta_to_oneline.txt',
         mode: str = None
             if 'overwrite', function will overwrite output file
@@ -23,10 +21,14 @@ def convert_multiline_fasta_to_oneline(
         writes corrected sequences to output fasta file
     """
     if output_fasta is None:
-        output_fasta = datetime.now().strftime("%Y_%m_%d-%H_%M_%S_%f_convert_multiline_fasta_to_oneline.txt")
+        output_fasta = datetime.now().strftime(
+            "%Y_%m_%d-%H_%M_%S_%f_convert_multiline_fasta_to_oneline.txt"
+        )
     if os.path.isfile(output_fasta):
         if mode is None:
-            raise ValueError(f"File {output_fasta} already exists! Change file name or 'mode' argument.")
+            raise ValueError(
+                f"File {output_fasta} already exists! Change file name or 'mode' argument."
+            )
         elif mode == "overwrite":
             os.remove(output_fasta)
     with open(input_fasta, "r") as input_file:
@@ -40,10 +42,9 @@ def convert_multiline_fasta_to_oneline(
                 output_file.write(line)
                 flag_first_row = False
 
+
 def parse_blast_output(
-    input_blast: str, 
-    output_blast: str = None,
-    mode: str = None
+    input_blast: str, output_blast: str = None, mode: str = None
 ) -> None:
     """Function parse_blast_output
 
@@ -57,15 +58,19 @@ def parse_blast_output(
             if 'overwrite', function will overwrite output file
             if 'append', function will append into output file
             if None, function will raise error if file already exists
-            
+
     Returns: None
         writes sorted first row from each description to output blast file
     """
     if output_blast is None:
-        output_blast = datetime.now().strftime("%Y_%m_%d-%H_%M_%S_%f_parse_blast_output.txt")
+        output_blast = datetime.now().strftime(
+            "%Y_%m_%d-%H_%M_%S_%f_parse_blast_output.txt"
+        )
     if os.path.isfile(output_blast):
         if mode is None:
-            raise ValueError(f"File {output_blast} already exists! Change file name or 'mode' argument.")
+            raise ValueError(
+                f"File {output_blast} already exists! Change file name or 'mode' argument."
+            )
         elif mode == "overwrite":
             os.remove(output_blast)
     first_rows = []

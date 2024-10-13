@@ -33,12 +33,13 @@ def run_dna_rna_tools(*args: List[str]) -> List[str]:
         result = result[0]
     return result
 
+
 def filter_fastq(
     input_fastq: str,
     output_fastq: str,
     gc_bounds: Union[Tuple[float, float], float] = (0, 100),
     length_bounds: Union[Tuple[int, int], int] = (0, 2**32),
-    quality_threshold: float = 0
+    quality_threshold: float = 0,
 ) -> None:
     """Function filter_fastq
 
@@ -58,7 +59,7 @@ def filter_fastq(
     with open(input_fastq, "r") as input_file:
         with open(output_fastq, "a") as output_file:
             for line in input_file:
-                #import pdb; pdb.set_trace()
+                # import pdb; pdb.set_trace()
                 if line.startswith("@"):
                     name = line
                 elif line.startswith("+"):
@@ -68,10 +69,10 @@ def filter_fastq(
                 else:
                     seq_2 = line
                     seqs = {name: (seq_1, seq_2)}
-                    seqs_filtred = filter_fastq_from_dict(seqs, gc_bounds, length_bounds, quality_threshold)
+                    seqs_filtred = filter_fastq_from_dict(
+                        seqs, gc_bounds, length_bounds, quality_threshold
+                    )
                     if len(seqs_filtred) > 0:
                         output_file.write(name + seq_1 + comment + seq_2)
                     seq_1 = None
                     seq_2 = None
-
-  
