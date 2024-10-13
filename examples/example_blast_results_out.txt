@@ -1,0 +1,37 @@
+DNA methylase [Enterobacteriaceae]                                Enterobacter... NA              543        478    478   100%  4e-170 100.00 227        WP_000086153.1   
+DUF1380 domain-containing protein [Escherichia coli]              Escherichia ... NA              562        297    297   100%  3e-101 100.00 155        WP_262420535.1   
+DUF1380 family protein [Enterobacteriaceae]                       Enterobacter... NA              543        280    280   100%  5e-95 100.00 140        WP_000271745.1   
+DUF4158 domain-containing protein [Klebsiella pneumoniae]         Klebsiella p... NA              573        152    152   100%  4e-46 100.00 77         WP_228742947.1   
+DUF905 domain-containing protein [Shigella sonnei]                Shigella sonnei NA              624        163    163   100%  2e-50 100.00 79         WP_001242911.1   
+DinI-like family protein [Escherichia coli]                       Escherichia ... NA              562        168    168   100%  3e-52 100.00 98         WP_249544357.1   
+KlcA [Escherichia coli]                                           Escherichia ... NA              562        297    297   100%  1e-101 100.00 142        ADL14010.1       
+PilI type IV pilus biogenesis protein [Salmonella enterica]       Salmonella e... NA              28901      177    177   100%  2e-55 100.00 116        WP_234887431.1   
+PilK [Escherichia coli]                                           Escherichia ... NA              562        402    402   100%  3e-141 100.00 197        ADL13966.1       
+PilN family type IVB pilus formation outer membrane protein...    Enterobacter... NA              543        1143   1143  100%  0.0   100.00 560        WP_000748144.1   
+ProQ/FINO family protein [Enterobacteriaceae]                     Enterobacter... NA              543        415    415   100%  2e-146 100.00 200        WP_000517687.1   
+PsiB [Escherichia coli]                                           Escherichia ... NA              562        303    303   100%  1e-103 100.00 145        ADL13958.1       
+TEM family class A beta-lactamase [Escherichia coli]              Escherichia ... NA              562        592    592   100%  0.0   100.00 290        AMM70781.1       
+Tn3-like element Tn3 family transposase [Escherichia coli]        Escherichia ... NA              562        1743   1743  100%  0.0   100.00 865        EJD5616237.1     
+TnpA [Escherichia coli]                                           Escherichia ... NA              562        855    855   100%  0.0   100.00 421        ADL14066.1       
+Type II plasmid partioning protein [Salmonella enterica subsp.... Salmonella e... NA              90370      434    434   100%  8e-154 100.00 209        AYS80385.1       
+WbuC family cupin fold metalloprotein [Enterobacteriaceae]        Enterobacter... NA              543        186    186   100%  3e-59 100.00 90         WP_000243817.1   
+Y-family DNA polymerase [Escherichia coli]                        Escherichia ... NA              562        884    884   100%  0.0   100.00 423        WP_229266091.1   
+YagA [Escherichia coli]                                           Escherichia ... NA              562        939    939   100%  0.0   100.00 456        AKH45772.1       
+conjugal transfer protein TraA [Enterobacteriaceae]               Enterobacter... NA              543        197    197   100%  2e-63 100.00 95         WP_000074855.1   
+conjugal transfer protein TraC [Enterobacteriaceae]               Enterobacter... NA              543        466    466   100%  7e-166 100.00 227        WP_000213862.1   
+extended-spectrum class A beta-lactamase CTX-M-15 [Bacteria]      Bacteria        eubacteria      2          593    1187  100%  0.0   100.00 291        WP_000239590.1   
+hypothetical protein AI3070V1_1489 [Klebsiella pneumoniae]        Klebsiella p... NA              573        81.3   81.3  100%  9e-19 100.00 69         CAF9672448.1     
+hypothetical protein AM398_25285 [Escherichia coli]               Escherichia ... NA              562        635    635   100%  0.0   100.00 323        ARX32560.1       
+hypothetical protein [Enterobacteriaceae]                         Enterobacter... NA              543        150    150   100%  2e-45 100.00 73         WP_001104879.1   
+hypothetical protein [Enterobacteriaceae]                         Enterobacter... NA              543        197    197   100%  3e-63 100.00 100        WP_001245884.1   
+hypothetical protein [Enterobacteriaceae]                         Enterobacter... NA              543        348    348   100%  5e-121 100.00 169        WP_000045395.1   
+hypothetical protein [Enterobacteriaceae]                         Enterobacter... NA              543        522    522   100%  0.0   100.00 258        WP_001005022.1   
+hypothetical protein [Escherichia coli]                           Escherichia ... NA              562        1339   1339  100%  0.0   100.00 678        ATL64672.1       
+protein impA [Escherichia coli UMEA 3201-1]                       Escherichia ... NA              1281214    300    300   100%  1e-102 100.00 161        EQX90098.1       
+putative dNA methylase [Escherichia coli MP021552.7]              Escherichia ... NA              1116132    134    134   100%  1e-38 100.00 113        EMU72357.1       
+recombinase family protein [Bacteria]                             Bacteria        eubacteria      2          364    364   100%  1e-126 100.00 185        WP_001235713.1   
+replication initiation protein [Salmonella enterica subsp....     Salmonella e... NA              90370      731    731   100%  0.0   100.00 358        AYS80374.1       
+single-stranded DNA-binding protein [Salmonella enterica]         Salmonella e... NA              28901      358    358   100%  2e-124 100.00 194        EAM4270332.1     
+transcription termination factor NusG [Enterobacteriaceae]        Enterobacter... NA              543        368    368   100%  1e-128 100.00 177        WP_001372168.1   
+type IV pilus biogenesis lipoprotein PilL [Escherichia coli]      Escherichia ... NA              562        717    717   100%  0.0   99.72  355        EEU5107088.1     
+type IV pilus biogenesis protein PilM [Enterobacteriaceae]        Enterobacter... NA              543        291    291   100%  5e-99 100.00 145        WP_000539806.1   

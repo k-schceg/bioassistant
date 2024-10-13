@@ -1,6 +1,7 @@
 import additional_functions.dna_rna_func as drf
 import additional_functions.fastq_func as qf
 import additional_functions.general_func as gf
+from additional_functions.fastq_func import filter_fastq_from_dict
 from typing import List, Dict, Tuple, Union
 
 
@@ -34,34 +35,44 @@ def run_dna_rna_tools(*args: List[str]) -> List[str]:
 
 
 def filter_fastq(
-    seqs: Dict[str, Tuple[str, str]],
+    input_fastq: str,
+    output_fastq: str,
     gc_bounds: Union[Tuple[float, float], float] = (0, 100),
     length_bounds: Union[Tuple[int, int], int] = (0, 2**32),
     quality_threshold: float = 0,
-) -> Dict[str, Tuple[str, str]]:
+) -> None:
     """Function filter_fastq
 
     Args:
-        seqs: Dict[str, Tuple[str, str]],
+        input_fastq: str
+            path to input fastq file,
+        output_fastq: str
+            path to output fastq file,
         gc_bounds: Tuple[float, float] = (0, 100),
         length_bounds: Tuple[int, int] = (0, 2**32),
         quality_threshold: float = 0
 
-    Returns: Dict[str, Tuple[str, str]]
+    Returns: None
+        writes filtered sequences to output fastq file
     """
-    if isinstance(gc_bounds, (int, float)):
-        gc_bounds = (0, gc_bounds)
-    if isinstance(length_bounds, int):
-        length_bounds = (0, length_bounds)
-    filtered_fastq = {}
-    for name, seq in seqs.items():
-        if (drf.gc_content(seq[0]) < gc_bounds[0]) or (
-            drf.gc_content(seq[0]) > gc_bounds[1]
-        ):
-            continue
-        if (len(seq[0]) < length_bounds[0]) or (len(seq[0]) > length_bounds[1]):
-            continue
-        if qf.quality(seq[1]) < quality_threshold:
-            continue
-        filtered_fastq[name] = seq
-    return filtered_fastq
+    seq_1 = None
+    with open(input_fastq, "r") as input_file:
+        with open(output_fastq, "a") as output_file:
+            for line in input_file:
+                # import pdb; pdb.set_trace()
+                if line.startswith("@"):
+                    name = line
+                elif line.startswith("+"):
+                    comment = line
+                elif seq_1 is None:
+                    seq_1 = line
+                else:
+                    seq_2 = line
+                    seqs = {name: (seq_1, seq_2)}
+                    seqs_filtred = filter_fastq_from_dict(
+                        seqs, gc_bounds, length_bounds, quality_threshold
+                    )
+                    if len(seqs_filtred) > 0:
+                        output_file.write(name + seq_1 + comment + seq_2)
+                    seq_1 = None
+                    seq_2 = None
