@@ -1,8 +1,11 @@
-# BioAssistant
+# BioAssistant 2.0
 
 <img align="right" src="bioassistant.jpg" alt="BioAssistant" width="400">
 
-**BioAssistant** is a toolkit for basic operations with DNA and RNA sequences. Your bioassistant will help you with such operations on DNA and RNA as transcription, finding the reversed, complementary and reversed complementary sequence, determining the gc-content and belonging of the sequence to a palindrome. It can also filter fastq by gc-content, sequence length and read quality.
+**BioAssistant** is a toolkit for basic operations with DNA and RNA sequences. Your bioassistant will help you with such operations on DNA and RNA as transcription, finding the reversed, complementary and reversed complementary sequence, determining the gc-content and belonging of the sequence to a palindrome. It can also filter fastq by gc-content, sequence length and read quality. 
+Have a fasta file, but can't make a blast? BioAssistant will remove unnecessary gaps in the sequence. Got too much unnecessary information after multiple alignments from blast? No problem! BioAssistant will help you leave only the most important alignments.
+
+Just call and BioAssistant will help you!
 ## Content
 
 * [Installation](#installation)
@@ -36,7 +39,7 @@ Enjoy
 ```
 * #### GC_content
 ```python
->>> bio.filter_fastq(
+>>> bioassistant.filter_fastq_from_dict(
       {
           '@SRX079801': ('ACAGCAACATAAACATGATGGGATGGCGTAAGCCCCCGA', 
                          'FGGGFGGGFGGGFGDFGCEBB@CCDFDDFFFFBFFGFGE'),
@@ -51,12 +54,21 @@ Enjoy
   )
 {'@SRX079802': ('ATTAGCGAGGAGGAGTGCTGAG', 'BFFFFFFFB@B@A<@D>BDDAC')}
 ```
+* #### Parse blast results
+```python
+>> bioassistant.parse_blast_output(example_blast_results.txt, example_blast_results_out.txt)
+```
+Examples of input and output data are in the folder "examples"
 
 ## FAQ
 
-**Q** What updates to expect in the new version?
+**Q** What updates have appeared in the new version?
 
-**A** It will be possible to work directly with fasta and fasta files.
+**A** Work with files has been added. Now you can search for the best alignments from blast results and process multiline fasta files
+
+**Q** Can I still work with fastq directly as a dictionary?
+
+**A** Yes, there is now a separate function filter_fastq_from_dict for this
 
 **Q** Can I process several sequences at once?
 
@@ -71,4 +83,3 @@ Enjoy
 You can send your feedback directly to the GitHub [issue tracker](https://github.com/k-schceg/bioassistant/issues)
 
 All contributions, bug reports, bug fixes, documentation improvements, enhancements, and ideas are welcome.
-
