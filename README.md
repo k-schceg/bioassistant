@@ -1,8 +1,8 @@
-# BioAssistant 2.0
+# BioAssistant 3.0
 
 <img align="right" src="bioassistant.jpg" alt="BioAssistant" width="400">
 
-**BioAssistant** is a toolkit for basic operations with DNA and RNA sequences. Your bioassistant will help you with such operations on DNA and RNA as transcription, finding the reversed, complementary and reversed complementary sequence, determining the gc-content and belonging of the sequence to a palindrome. It can also filter fastq by gc-content, sequence length and read quality. 
+**BioAssistant** is a toolkit for basic operations with DNA and RNA sequences. Your bioassistant will help you with such operations on DNA and RNA as transcription, finding the reversed, complementary and reversed complementary sequence. It can also filter fastq by gc-content, sequence length and read quality. 
 Have a fasta file, but can't make a blast? BioAssistant will remove unnecessary gaps in the sequence. Got too much unnecessary information after multiple alignments from blast? No problem! BioAssistant will help you leave only the most important alignments.
 
 Just call and BioAssistant will help you!
@@ -34,25 +34,18 @@ Enjoy
 
 * #### Transcription
 ```python
->>> bioassistant.run_dna_rna_tools("ATCG", "GATAATGGC", "transcribe")
-['AUCG', 'GAUAAUGGC']
+>>> dna = bioassistant.DNASequence(GATAATGGC)
+dna.transcribe
+'GAUAAUGGC'
 ```
-* #### GC_content
+* #### Fastq filter
 ```python
->>> bioassistant.filter_fastq_from_dict(
-      {
-          '@SRX079801': ('ACAGCAACATAAACATGATGGGATGGCGTAAGCCCCCGA', 
-                         'FGGGFGGGFGGGFGDFGCEBB@CCDFDDFFFFBFFGFGE'),
-          '@SRX079802': ('ATTAGCGAGGAGGAGTGCTGAG', 
-                         'BFFFFFFFB@B@A<@D>BDDAC'),
-          '@SRX079803': ('GAACGACAGCAGCTCCTGCATAACCGCGTCCTTCTTCTT', 
-                         'DFFFEGDGGGGFGGEDCCDCEFFFFCCCCCB>CEBFGFB')
-      }, 
+>>> bioassistant.filter_fastq(
+      './examples/example_fastq.fastq', 
+      './examples/example_fastq_out.fastq'
       gc_bounds=(100),
       length_bounds=(0, 25),
-      quality_threshold=17
-  )
-{'@SRX079802': ('ATTAGCGAGGAGGAGTGCTGAG', 'BFFFFFFFB@B@A<@D>BDDAC')}
+      quality_threshold=17)
 ```
 * #### Parse blast results
 ```python
@@ -64,11 +57,7 @@ Examples of input and output data are in the folder "examples"
 
 **Q** What updates have appeared in the new version?
 
-**A** Work with files has been added. Now you can search for the best alignments from blast results and process multiline fasta files
-
-**Q** Can I still work with fastq directly as a dictionary?
-
-**A** Yes, there is now a separate function filter_fastq_from_dict for this
+**A** Working with sequences has become even easier! Now sequences are objects of certain classes: DNASequence, RNASequence or AminoAcidSequence
 
 **Q** Can I process several sequences at once?
 
