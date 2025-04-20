@@ -27,29 +27,58 @@ Import bioassistant module into your script
 ```python
 import bioassistant
 ```
+Call help if you want to use command line
+```
+$ python bioassistant.py --help
+```  
+
 Enjoy
 
 
 ## Examples
 
 * #### Transcription
+python example  
 ```python
->>> dna = bioassistant.DNASequence(GATAATGGC)
-dna.transcribe
-'GAUAAUGGC'
+>>> dna = bioassistant.DNASequence('GATAATGGC')
+>>> print(dna.transcribe())
+GAUAAUGGC
+```
+command line example  
+```
+$ python bioassistant.py transcribe --dna GATAATGGC
+GAUAAUGGC
 ```
 * #### Fastq filter
+python example  
 ```python
 >>> bioassistant.filter_fastq(
       './examples/example_fastq.fastq', 
-      './examples/example_fastq_out.fastq'
-      gc_bounds=(100),
+      './examples/example_fastq_out.fastq',
+      gc_bounds=(0, 100),
       length_bounds=(0, 25),
-      quality_threshold=17)
+      quality_threshold=17
+    )
+```
+command line example  
+```
+$ python bioassistant.py filter-fastq \
+    --input-file ./examples/example_fastq.fastq \
+    --output-file ./examples/example_fastq_out.fastq \
+    --gc-bounds 0 100 \
+    --length-bounds 0 25 \
+    --quality-threshold 17
 ```
 * #### Parse blast results
+python example  
 ```python
->> bioassistant.parse_blast_output(example_blast_results.txt, example_blast_results_out.txt)
+>>> bioassistant.parse_blast_output('./examples/example_blast_results.txt', './examples/example_blast_results_out.txt')
+```
+command line example  
+```
+$ python bioassistant.py parse-blast \
+    --input-file ./examples/example_blast_results.txt \
+    --output-file ./examples/example_blast_results_out.txt
 ```
 Examples of input and output data are in the folder "examples"
 
