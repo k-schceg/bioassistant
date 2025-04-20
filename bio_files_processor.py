@@ -1,6 +1,16 @@
 import os
 from datetime import datetime
+import logging
 
+
+logger = logging.getLogger(__name__)
+logging.basicConfig(
+    filename=datetime.now().strftime("%Y_%m_%d-%H_%M_%S_%f_bio_files_processor_log.txt"),
+    encoding='utf-8',
+    level=logging.NOTSET,
+    format='%(asctime)s - %(name)s - %(levelname)s: %(message)s',
+    datefmt='%Y-%m-%d %I:%M:%S %p'
+)
 
 def convert_multiline_fasta_to_oneline(
     input_fasta: str, output_fasta: str = None, mode: str = None
@@ -26,6 +36,7 @@ def convert_multiline_fasta_to_oneline(
         )
     if os.path.isfile(output_fasta):
         if mode is None:
+            logger.error(f"File {output_fasta} already exists! Change file name or 'mode' argument.")
             raise ValueError(
                 f"File {output_fasta} already exists! Change file name or 'mode' argument."
             )
@@ -62,19 +73,28 @@ def parse_blast_output(
     Returns: None
         writes sorted first row from each description to output blast file
     """
+    logger.info('Start blast parsing')
+    if not os.path.isfile(input_blast):
+        logger.error(f"Input file {input_blast} doesn't exists!")
+        raise ValueError(f"Input file {input_blast} doesn't exists!")
     if output_blast is None:
         output_blast = datetime.now().strftime(
             "%Y_%m_%d-%H_%M_%S_%f_parse_blast_output.txt"
         )
+        logger.warning(f'Output blast file is not provided => set output_blast = "{output_blast}"')
     if os.path.isfile(output_blast):
+        logger.warning(f'Output blast file "{output_blast}" already exists')
         if mode is None:
+            logger.error(f"File {output_blast} already exists! Change file name or 'mode' argument.")
             raise ValueError(
                 f"File {output_blast} already exists! Change file name or 'mode' argument."
             )
         elif mode == "overwrite":
+            logger.info(f'Output file overwrite mode activated')
             os.remove(output_blast)
     first_rows = []
     flag_read_row = False
+    logger.info(f'Processing blast...')
     with open(input_blast, "r") as input_file:
         for line in input_file:
             if line.startswith("Description"):
@@ -82,7 +102,10 @@ def parse_blast_output(
             elif flag_read_row:
                 first_rows.append(line)
                 flag_read_row = False
+    logger.info(f'Blast file processed')
     first_rows.sort()
+    logger.info(f'Saving to output file')
     with open(output_blast, "a") as output_file:
         for line in first_rows:
             output_file.write(line)
+    logger.info(f'Success!')
